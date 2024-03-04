@@ -1,5 +1,27 @@
+import FeedbackForm from "./FeedbackForm";
+import Logo from "./Logo";
+import PageHeading from "./PageHeading";
+
 function Header() {
-  return <header></header>;
+  return (
+    <header>
+      <img
+        src="https://bytegrad.com/course-assets/js/1/pattern.svg"
+        alt="pattern"
+        className="pattern"
+      />
+      <a href="/" className="logo">
+        <img
+          src="https://bytegrad.com/course-assets/js/1/logo.svg"
+          alt="logo"
+        />
+      </a>
+      <h1>
+        Give Feedback. <span>Publicly.</span>
+      </h1>
+      <FeedbackForm />
+    </header>
+  );
 }
 
 export default Header;

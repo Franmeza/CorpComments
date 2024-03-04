@@ -1,8 +1,7 @@
 function Footer() {
   return (
-    <footer>
-      <small>Created by Francisco Meza. </small>
-      <small>March 2024</small>
+    <footer className="footer">
+      <small>Created by Francisco Meza. March 2024 </small>
     </footer>
   );
 }

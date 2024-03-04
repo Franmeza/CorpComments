@@ -265,7 +265,7 @@ form button {
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 4px 16px 9px;
+  padding: 9px 16px;
   border-radius: 500px;
   font-weight: 600;
   background-color: #fff;
@@ -277,6 +277,7 @@ form button {
 
 form button:hover,
 form button:focus {
+  transition: all 0.2s;
   transform: translateY(-2px) translateZ(0) scale(1.15);
 }
 
@@ -284,21 +285,21 @@ form button:active {
   transform: translateY(-2px) translateZ(0) scale(1.07);
 }
 
-form button:hover span {
+/* form button:hover span {
   transform: translateY(2px) translateZ(0);
-}
+} */
 
-form button span {
+/* form button span {
   display: block;
   transition: all 0.2s;
   backface-visibility: hidden;
   transform: translateY(2px) translateZ(0) rotate(0);
-}
+} */
 
-form button span::selection {
-  color: rgba(0, 0, 0, 0.85);
-  background-color: rgba(0, 0, 0, 0.1);
-}
+/* form button span::selection {
+    color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.1);
+    } */
 
 /* FEEDBACKS */
 .feedback-list {
