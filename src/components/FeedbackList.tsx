@@ -1,24 +1,29 @@
-import { TriangleUpIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
+import FeedBackItem from "./FeedbackItem";
+import Spinner from "./spinner";
+
 function FeedbackList() {
+  const [feedbackItems, setFeedbackItems] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(
+      "https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setFeedbackItems(data.feedbacks);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <ol className="feedback-list">
-      <li className="feedback">
-        <button>
-          <TriangleUpIcon />
-          <span>593</span>
-        </button>
-        <div>
-          <p>B</p>
-        </div>
-        <div>
-          <p>ByteGrad</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-            maiores quos iste voluptate, aperiam nemo.
-          </p>
-        </div>
-        <p>4d</p>
-      </li>
+      {isLoading ? <Spinner /> : ""}
+      {feedbackItems.map((feedbackItem) => (
+        <FeedBackItem key={feedbackItem.id} feedbackItem={feedbackItem} />
+      ))}
     </ol>
   );
 }
