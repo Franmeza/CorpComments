@@ -1,8 +1,10 @@
 import FeedbackForm from "./FeedbackForm";
-import Logo from "./Logo";
-import PageHeading from "./PageHeading";
 
-function Header() {
+type HeaderProps = {
+  handdleAddToList: (text: string) => void;
+};
+
+function Header({ handdleAddToList }: HeaderProps) {
   return (
     <header>
       <img
@@ -19,7 +21,7 @@ function Header() {
       <h1>
         Give Feedback. <span>Publicly.</span>
       </h1>
-      <FeedbackForm />
+      <FeedbackForm onAddToList={handdleAddToList} />
     </header>
   );
 }
