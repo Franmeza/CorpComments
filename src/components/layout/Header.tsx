@@ -1,4 +1,4 @@
-import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "../feedback/FeedbackForm";
 
 type HeaderProps = {
   handdleAddToList: (text: string) => void;
