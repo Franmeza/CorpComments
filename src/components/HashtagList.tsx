@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { TFeedbackItem } from "../utils/types";
 
 type HashtagListProps = {
@@ -6,11 +7,15 @@ type HashtagListProps = {
 };
 
 function HashtagList({ feedbackItems, onSelectCompany }: HashtagListProps) {
-  const companyList = feedbackItems
-    .map((item) => item.company)
-    .filter((company, index, array) => {
-      return array.indexOf(company) === index;
-    });
+  const companyList = useMemo(
+    () =>
+      feedbackItems
+        .map((item) => item.company)
+        .filter((company, index, array) => {
+          return array.indexOf(company) === index;
+        }),
+    [feedbackItems]
+  );
 
   return (
     <ul className="hashtags">
