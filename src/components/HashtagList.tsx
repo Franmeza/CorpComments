@@ -1,15 +1,24 @@
-function HashtagList() {
+import { TFeedbackItem } from "../utils/types";
+
+type HashtagListProps = {
+  feedbackItems: TFeedbackItem[];
+  onSelectCompany: (company: string) => void;
+};
+
+function HashtagList({ feedbackItems, onSelectCompany }: HashtagListProps) {
+  const companyList = feedbackItems
+    .map((item) => item.company)
+    .filter((company, index, array) => {
+      return array.indexOf(company) === index;
+    });
+
   return (
     <ul className="hashtags">
-      <li>
-        <button>#Nike</button>
-      </li>
-      <li>
-        <button>#Netflix</button>
-      </li>
-      <li>
-        <button>#Mc Donald's</button>
-      </li>
+      {companyList.map((company) => (
+        <li key={company}>
+          <button onClick={() => onSelectCompany(company)}>#{company}</button>
+        </li>
+      ))}
     </ul>
   );
 }

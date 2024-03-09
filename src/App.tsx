@@ -9,6 +9,13 @@ function App() {
   const [feedbackItems, setFeedbackItems] = useState<TFeedbackItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedCompany, setSelectedCompany] = useState("");
+
+  const filteredFeedbackItems = selectedCompany
+    ? feedbackItems.filter(
+        (feedbackItem) => feedbackItem.company === selectedCompany
+      )
+    : feedbackItems;
 
   const handleAddToList = async (text: string) => {
     const companyName = text
@@ -31,6 +38,10 @@ function App() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSelectCompany = (company: string) => {
+    setSelectedCompany(company);
   };
 
   useEffect(() => {
@@ -57,12 +68,15 @@ function App() {
     <div className="app">
       <Footer />
       <Container
-        feedbackItems={feedbackItems}
+        feedbackItems={filteredFeedbackItems}
         isLoading={isLoading}
         errorMessage={errorMessage}
         handleAddToList={handleAddToList}
       />
-      <HashtagList />
+      <HashtagList
+        feedbackItems={feedbackItems}
+        onSelectCompany={handleSelectCompany}
+      />
     </div>
   );
 }
