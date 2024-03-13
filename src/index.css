@@ -536,8 +536,8 @@ form button:active {
 .footer {
   position: absolute;
   transform: rotate(-90deg);
-  left: -225px;
-  bottom: 174px;
+  left: -125px;
+  bottom: 100px;
 }
 
 /* COPYRIGHT */
