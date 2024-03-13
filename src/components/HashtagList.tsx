@@ -1,12 +1,10 @@
 import { useMemo } from "react";
-import { TFeedbackItem } from "../utils/types";
 
-type HashtagListProps = {
-  feedbackItems: TFeedbackItem[];
-  onSelectCompany: (company: string) => void;
-};
+import { useFeedbackItemsStore } from "../store/feedbackItemsStore";
 
-function HashtagList({ feedbackItems, onSelectCompany }: HashtagListProps) {
+function HashtagList() {
+  const feedbackItems = useFeedbackItemsStore((state) => state.feedbackItems);
+  const onSelectCompany = useFeedbackItemsStore((state) => state.selectCompany);
   const companyList = useMemo(
     () =>
       feedbackItems

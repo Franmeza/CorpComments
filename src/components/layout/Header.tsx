@@ -1,10 +1,8 @@
+import { useFeedbackItemsStore } from "../../store/feedbackItemsStore";
 import FeedbackForm from "../feedback/FeedbackForm";
 
-type HeaderProps = {
-  handdleAddToList: (text: string) => void;
-};
-
-function Header({ handdleAddToList }: HeaderProps) {
+function Header() {
+  const addItemToList = useFeedbackItemsStore((state) => state.addItemToList);
   return (
     <header>
       <img
@@ -21,7 +19,7 @@ function Header({ handdleAddToList }: HeaderProps) {
       <h1>
         Give Feedback. <span>Publicly.</span>
       </h1>
-      <FeedbackForm onAddToList={handdleAddToList} />
+      <FeedbackForm onAddToList={addItemToList} />
     </header>
   );
 }

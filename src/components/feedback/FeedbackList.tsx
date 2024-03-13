@@ -1,23 +1,19 @@
-import { TFeedbackItem } from "../../utils/types";
 import FeedBackItem from "./FeedbackItem";
 import Spinner from "../Spinner";
+import { useFeedbackItemsStore } from "../../store/feedbackItemsStore";
 
-type FeedbackListProps = {
-  feedbackItems: TFeedbackItem[];
-  isLoading: boolean;
-  errorMessage: string;
-};
+function FeedbackList() {
+  const filteredFeedbackItems = useFeedbackItemsStore((state) =>
+    state.getFilteredFeedbackItems()
+  );
+  const isLoading = useFeedbackItemsStore((state) => state.isLoading);
+  const errorMessage = useFeedbackItemsStore((state) => state.errorMessage);
 
-function FeedbackList({
-  feedbackItems,
-  isLoading,
-  errorMessage,
-}: FeedbackListProps) {
   return (
     <ol className="feedback-list">
       {isLoading && <Spinner />}
       {errorMessage && <p>Something went wrong!</p>}
-      {feedbackItems.map((feedbackItem) => (
+      {filteredFeedbackItems.map((feedbackItem) => (
         <FeedBackItem key={feedbackItem.id} feedbackItem={feedbackItem} />
       ))}
     </ol>
